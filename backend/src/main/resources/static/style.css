@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+#header{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+#header-left{
+    margin-left: 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+#header h1{
+    margin-left: 10px;
+}
+
+#logo{
+    height: 50px;
+    width: 50px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#login-btn-container{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+#login-btn-container span{
+    font-size: 18px;
+}
+
+#page-container{
+    width: 100%;
+    height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#map-container{
+    margin-top: 30px;
+    width: 70%;
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#map{
+    width: 100%;
+    height: 100%;
+}
+
+#form-container{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    font-weight: bold;
+    height: 23px;
+    width: 300px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+
+
+input{
+    height: 30px;
+    border-radius: 3px;
+    width: 300px;
+    font-size: 18px;
+    padding: 2px;
+    padding-left: 3px;
+}
+
+.btn{
+    height: 50px;
+    width: 300px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.btn-info {
+    color: white;
+    background-color: #0467e2;
+}
+
+.btn-danger{
+    color: white;
+    background-color: red;
+}
+#rabotno-vreme-container{
+    margin-top: 20px;
+    height: 23px;
+    width: 300px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+#rabotno-vreme-container input{
+    width: 50px;
+}
+
+#form-container .btn-danger{
+    margin-top: 50px;
+}
+#form-container .btn-info{
+    margin-bottom: 40px;
+}
+
+#admin-menu{
+    height: 100%;
+    width: 20%;
+    background-color: #2a2929;
+    color: white;
+}
+
+#admin-main{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-control-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#dropdownSpan{
+    position: relative;
+    display: inline-block;
+}
+
+#dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#dropdownSpan:hover .dropdown-content{
+    display: block;
+}
+
+
+

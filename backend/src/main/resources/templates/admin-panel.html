@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+<div id="header">
+  <a href="/"><div id="header-left"><img src="../static/logo.png" th:src="@{/logo.png}" id="logo"/><h1 style="color: black">Restourants in Skopje</h1></div></a>
+  <a href="/login"><div id="login-btn-container"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+  </svg><span th:if="${session.user==null}">Најави се</span><span th:if="${session.user!=null}" th:text="${session.user.getUsername()}"></span></div></a>
+</div>
+<div id="page-container" style="display: flex;height: 660px">
+    <div id="admin-menu">
+        <a href="/admin" style="color: white"><div style="width: 100%;margin-top: 50px"><h2 style="text-align: center">Додади ресторан</h2></div></a>
+    </div>
+    <div id="admin-main">
+        <h1 style="margin-bottom: 40px">Додади ресторан</h1>
+        <div th:if="${hasError}" class="error" style="color: red">
+            <div th:text="${error}"></div>
+        </div>
+        <form method="post" style="display: flex;flex-direction: column;justify-content: center;align-items: center;width: 100%" th:action="@{/admin}">
+            <div class="admin-row">
+                <div class="form-control-container">
+                    <label for="ime">Име</label>
+                    <input type="text" id="ime" name="name" required placeholder="restaurant name">
+                </div>
+                <div class="form-control-container">
+                    <label for="naselba">Населба</label>
+                    <input type="text" id="naselba" name="suburb" required placeholder="suburb name">
+                </div>
+                <div class="form-control-container">
+                    <label for="website">Вебсајт</label>
+                    <input type="text" id="website" name="website" required placeholder="http://example" >
+                </div>
+
+            </div>
+            <div class="admin-row">
+                <div class="form-control-container">
+                    <label for="telefon">Телефон</label>
+                    <input type="text" id="telefon" name="phone" required placeholder="+38971234567">
+                </div>
+                <div class="form-control-container">
+                    <label for="long">long</label>
+                    <input type="text" id="long" name="lon" required placeholder="20.000">
+                </div>
+                <div class="form-control-container">
+                    <label for="lat">lat</label>
+                    <input type="text" id="lat" name="lat" required placeholder="40.000">
+                </div>
+            </div>
+            <div class="admin-row">
+                <div class="form-control-container">
+                    <label for="ulica">Улица</label>
+                    <input type="text" id="ulica" name="street" required placeholder="street name">
+                </div>
+                <div class="form-control-container">
+                    <label for="opens">Отворено од</label>
+                    <input type="text" id="opens" name="opens" required placeholder="08:00">
+                </div>
+                <div class="form-control-container">
+                    <label for="closes">Отворено до</label>
+                    <input type="text" id="closes" name="closes" required placeholder="23:00">
+                </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-danger" style="margin-top: 30px">Додади</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

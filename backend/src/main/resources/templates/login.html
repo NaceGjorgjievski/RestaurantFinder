@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/style.css"/>
+  <meta charset="UTF-8">
+  <title>Log in</title>
+</head>
+<body>
+<div id="header">
+  <a href="/"><div id="header-left"><img src="../static/logo.png" th:src="@{/logo.png}" id="logo"/><h1 style="color: black">Restourants in Skopje</h1></div></a>
+  <a href="/login"><div id="login-btn-container"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+  </svg><span>Најави се</span></div></a>
+</div>
+<div id="page-container" style="justify-content: center">
+
+  <div id="form-container">
+    <h1>Најави се</h1>
+    <div th:if="${hasError}" class="error" style="color: red">
+      <div th:text="${error}"></div>
+    </div>
+    <form method="post" style="display: flex;flex-direction: column">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" required placeholder="example@mail.com">
+    <label for="password">Лозинка</label>
+    <input type="password" id="password" name="password" required><button type="submit" class="btn btn-danger">Најави се</button>
+    </form>
+
+    <span style="display: flex"><p><b>Нов корисник?</b></p><a href="/register" style="text-decoration: underline;margin-left: 10px">Регистрирај се</a></span>
+  </div>
+</div>
+</body>
+</html>
