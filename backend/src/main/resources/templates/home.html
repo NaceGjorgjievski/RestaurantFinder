@@ -24,7 +24,7 @@
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
         </svg><span th:if="${session.user==null}">Најави се</span><span th:if="${session.user!=null}" th:text="${session.user.getUsername()}"><!--<div id="dropdown-content"><a href="/admin">Dashboard</a><a href="/logout">Logout</a></div>--></span></div></a>
         <a th:if="${session.user}!=null and ${session.user.isAdmin()}" style="color: black" href="/admin">Dashboard</a>
-        <a th:if="${session.user!=null}" style="margin-left: 30px; color: black" href="/logout">Logout</a>
+        <a th:if="${session.user!=null}" style="margin-left: 30px; color: black" href="/logout">Одјави се</a>
     </div>
 </div>
 <div id="page-container">
