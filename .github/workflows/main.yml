@@ -3,21 +3,11 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: dians
-          POSTGRES_PASSWORD: dians2022
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - name: Checkout code
@@ -29,8 +19,17 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Start PostgreSQL and Spring Boot using Docker Compose
+        run: |
+          docker-compose -f backend/docker-compose.yml up -d
+
+      - name: Wait for services to start
+        run: |
+          docker-compose -f backend/docker-compose.yml ps
+          docker-compose -f backend/docker-compose.yml logs -t --tail 100
+
       - name: Build with Maven
-        run: mvn -f backend/pom.xml clean package
+        run: docker-compose -f backend/docker-compose.yml exec backend mvn -f backend/pom.xml clean package
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -46,4 +45,7 @@ jobs:
           tags: naceg/backend-app:latest
           build-args: |
             ARG_NAME=value   # Add build arguments if required
-          file: backend/Dockerfile
+          file: backend/Dockerfile  # Specify the path to your Dockerfile relative to the context
+
+      - name: Stop and remove containers
+        run: docker-compose -f backend/docker-compose.yml down
