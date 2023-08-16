@@ -22,7 +22,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
   backend-app:
     container_name: backend-app
-    image: backend-app:latest
+    image: naceg/backend-app:latest
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://wp-db:5432/restaurant
       SPRING_DATASOURCE_USERNAME: dians
