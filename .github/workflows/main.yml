@@ -19,6 +19,12 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
       - name: Start PostgreSQL and Spring Boot using Docker Compose
         run: |
           docker-compose -f backend/docker-compose.yml up -d
@@ -30,12 +36,6 @@ jobs:
 
       - name: Build with Maven
         run: docker-compose -f backend/docker-compose.yml exec backend mvn -f backend/pom.xml clean package
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
